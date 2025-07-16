@@ -30,7 +30,6 @@ resource "helm_release" "atlantis" {
     name  = "github.secret"
     value = var.webhook_secret
   }
-
   set {
     name  = "service.type"
     value = "LoadBalancer"
