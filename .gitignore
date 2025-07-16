@@ -3,3 +3,4 @@ docker-compose*
 terraform.tfvars
 *.tfstate
 *.tfstate.*
+secrets.auto.tfvars
