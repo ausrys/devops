@@ -1,3 +1,5 @@
 docker-compose*
 .terraform/
 terraform.tfvars
+*.tfstate
+*.tfstate.*
