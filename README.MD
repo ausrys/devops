@@ -38,7 +38,35 @@ kubectl get svc -n atlantis
 
 Look for the EXTERNAL-IP under the atlantis service. Open the IP in your browser to access Atlantis.
 
-### 3. Configure GitHub Webhook
+### 3. Access Atlantis UI
+
+Additional info
+Grant IAM User Access to EKS
+Go to EKS → Clusters → Your Cluster → Access tab, and add your IAM user or role under Access Entries:
+
+```json
+{
+  "type": "USER",
+  "principalArn": "arn:aws:iam::<account-id>:user/<your-user-name>",
+  "accessPolicies": [
+    {
+      "policyArn": "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+    }
+  ]
+}
+```
+
+Enable EBS CSI Driver Permissions
+
+To allow persistent volumes to bind correctly (e.g., for atlantis-data):
+
+Go to IAM → Roles → Your NodeGroup Role
+
+Attach this policy: AmazonEBSCSIDriverPolicy
+
+### 4. Configure GitHub Webhook
+
+
 
 In your GitHub repository:
 
