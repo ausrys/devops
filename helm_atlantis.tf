@@ -8,8 +8,27 @@ resource "helm_release" "atlantis" {
 
   # GitHub config block
   set {
-    name  = "environmentSecrets.existingSecret"
-    value = "atlantis-secrets"
+    name  = "github.token"
+    value = var.github_token
+  }
+
+  set {
+    name  = "github.user"
+    value = var.github_user
+  }
+
+  set {
+    name  = "github.hostname"
+    value = "github.com"
+  }
+  set {
+    name  = "orgAllowlist"
+    value = "github.com/${var.github_user}/${var.github_repo}"
+  }
+
+  set {
+    name  = "github.secret"
+    value = var.webhook_secret
   }
   set {
     name  = "service.type"
